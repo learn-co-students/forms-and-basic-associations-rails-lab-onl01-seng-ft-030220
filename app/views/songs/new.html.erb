@@ -7,8 +7,8 @@
   <%= f.label "Genre" %>
   <%= f.collection_select :genre_id, Genre.all, :id, :name %><br>
   <%= f.label :note_contents %>
-  <input type="text" name="song[note_contents][]" id="song_notes_attributes_0_content">
-  <input type="text" name="song[note_contents][]" id="song_notes_attributes_1_content">
+  <input type="text" name="song[note_contents][]">
+  <input type="text" name="song[note_contents][]">
   <%= f.fields_for :notes do |note| %>
   <%= note.label :note %>
   <%= note.text_area :content , rows: 2, cols: 50 %>
