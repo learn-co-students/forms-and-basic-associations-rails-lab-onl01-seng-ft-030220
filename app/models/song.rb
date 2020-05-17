@@ -5,11 +5,19 @@ class Song < ActiveRecord::Base
   has_many :notes
 
   def genre_name=(name)
-    self.genre = Genre.find(name: name)
+    self.genre = Genre.find_by(name: name)
   end
 
   def genre_name
     self.genre ? self.genre : nil
+  end
+
+  def artist_name=(name)
+    self.artist = Artist.find_or_create_by(name: name)
+  end
+
+  def artist_name
+    self.artist ? self.artist.name : nil
   end
 
 end
