@@ -3,7 +3,7 @@ class Song < ActiveRecord::Base
   belongs_to :artist
   belongs_to :genre
   has_many :notes
-
+  accepts_nested_attributes_for :notes, :reject_if => proc { |attrs| attrs[:content].blank? }
   def artist_name
     self.artist.name if self.artist
   end
@@ -22,9 +22,11 @@ class Song < ActiveRecord::Base
     
   end
 
-  def note_content 
-
+  def note_contents=(contents)
+    binding.pry
   end
+
+ 
 
   
 end
